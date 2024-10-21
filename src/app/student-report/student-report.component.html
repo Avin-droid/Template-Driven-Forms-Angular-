@@ -1,0 +1,82 @@
+<h1>STUDENT ANNUAL REPORT</h1>
+<form name="student" #student="ngForm" (ngSubmit)="archive()" novalidate=""><br><br>
+First Name:<input type="text" name="fn" [(ngModel)]="d.f_name" #f_name="ngModel" pattern="^[A-Za-z]+" minlength="1" maxlength="30" required>
+<h5 *ngIf="f_name.touched && f_name.invalid">First Name Should match required Pattern</h5><br><br>
+<h6 *ngIf="f_name.errors && f_name.errors['maxlength']">First Name should not exceed maximum characters</h6>
+
+
+Middle Name:<input type="text" name="mn" [(ngModel)]="d.m_name" #m_name="ngModel" pattern="^[A-Za-z]+"  minlength="1" maxlength="30" required>
+<h5 *ngIf="m_name.touched && m_name.invalid">Middle Name Should match required Pattern</h5><br><br>
+<h6 *ngIf="f_name.errors && f_name.errors['maxlength']">First Name should not exceed maximum characters</h6>
+
+Last Name:<input type="text" name="ln" [(ngModel)]="d.l_name" #l_name="ngModel" pattern="^[A-Za-z]+" minlength="1" maxlength="30"  required>
+<h5 *ngIf="l_name.touched && l_name.invalid">Last Name Should match required Pattern</h5><br><br>
+<h6 *ngIf="f_name.errors && f_name.errors['maxlength']">Last Name should not exceed maximum characters</h6>
+
+Email-Id:<input type="text" name="em" [(ngModel)]="d.email" #email="ngModel" pattern="^[A-Za-z0-9@.com]+" required>
+<h5 *ngIf="email.touched && email.invalid">Email-Id Should match required Pattern</h5><br><br>
+
+Subject-1:<input type="text" name="s1" [(ngModel)]="d.sub_1" #sub_1="ngModel" pattern="^[0-9]+" required>
+<h5 *ngIf="sub_1.touched && sub_1.invalid">Marks should Match Required Pattern</h5><br><br>
+<h6 *ngIf="sub_1.value > 100">Marks cannot be greater than 100</h6>
+<h6 *ngIf="sub_1.value < 0">Marks cannot be negative</h6>
+
+Subject-2:<input type="text" name="s2" [(ngModel)]="d.sub_2" #sub_2="ngModel" pattern="^[0-9]+" required>
+<h5 *ngIf="sub_2.touched && sub_2.invalid">Marks should Match Required Pattern</h5><br><br>
+<h6 *ngIf="sub_2.value > 100">Marks cannot be greater than 100</h6>
+<h6 *ngIf="sub_2.value < 0">Marks cannot be negative</h6>
+
+Subject-3:<input type="text" name="s3" [(ngModel)]="d.sub_3" #sub_3="ngModel" pattern="^[0-9]+" required>
+<h5 *ngIf="sub_3.touched && sub_3.invalid">Marks should Match Required Pattern</h5><br><br>
+<h6 *ngIf="sub_3.value > 100">Marks cannot be greater than 100</h6>
+<h6 *ngIf="sub_3.value < 0">Marks cannot be negative</h6>
+
+Subject-4:<input type="text" name="s4" [(ngModel)]="d.sub_4" #sub_4="ngModel" pattern="^[0-9]+" required>
+<h5 *ngIf="sub_4.touched && sub_4.invalid">Marks should Match Required Pattern</h5><br><br>
+<h6 *ngIf="sub_4.value > 100">Marks cannot be greater than 100</h6>
+<h6 *ngIf="sub_4.value < 0">Marks cannot be negative</h6>
+
+Subject-5:<input type="text" name="s5" [(ngModel)]="d.sub_5" #sub_5="ngModel" pattern="^[0-9]+" required>
+<h5 *ngIf="sub_5.touched && sub_5.invalid">Marks should Match Required Pattern</h5><br><br>
+<h6 *ngIf="sub_5.value > 100">Marks cannot be greater than 100</h6>
+<h6 *ngIf="sub_5.value < 0">Marks cannot be negative</h6>
+
+<input type="submit" value="Submit"[disabled]="student.invalid"><br><br>
+
+</form>
+<br>
+<br>
+<br>
+
+<table>
+    <tr>
+        <th>First Name</th>
+        <th>Middle Name</th>
+        <th>Last Name</th>
+        <th>Email-Id</th>
+        <th>Subject-1</th>
+        <th>Subject-2</th>
+        <th>Subject-3</th>
+        <th>Subject-4</th>
+        <th>Subject-5</th>
+        <th>Percentage</th>
+        <th>Grade</th>
+        <th>Delete Record</th>
+    </tr>
+
+    <tr *ngFor="let dis of dArr; let i=index">
+        <td>{{dis.f_name}}</td>
+        <td>{{dis.m_name}}</td>
+        <td>{{dis.l_name}}</td>
+        <td>{{dis.email}}</td>
+        <td>{{dis.sub_1}}</td>
+        <td>{{dis.sub_2}}</td>
+        <td>{{dis.sub_3}}</td>
+        <td>{{dis.sub_4}}</td>
+        <td>{{dis.sub_5}}</td>
+        <td>{{dis.percentage}}</td>
+        <td>{{dis.grade}}</td>
+        <td><button (click)="clear(i)">Delete</button></td>
+    </tr>
+
+</table>
